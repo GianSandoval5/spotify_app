@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:spotify_app/domain/entities/song_models.dart';
 import 'package:spotify_app/presentation/bloc/music/music_bloc.dart';
 import 'package:spotify_app/presentation/bloc/music/music_event.dart';
 import 'package:spotify_app/presentation/bloc/music/music_state.dart';
 import 'package:spotify_app/presentation/providers/audio_provider.dart';
+import 'package:spotify_app/presentation/widgets/safe_network_image.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -259,19 +259,7 @@ class _SearchResultItem extends StatelessWidget {
         child: Row(
           children: [
             // Album Art
-            ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: CachedNetworkImage(
-                imageUrl: song.imageUrl,
-                width: 56,
-                height: 56,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => Container(
-                  color: Colors.grey[800],
-                  child: const Icon(Icons.music_note, color: Colors.grey),
-                ),
-              ),
-            ),
+            AlbumImage(imageUrl: song.imageUrl, size: 56),
             const SizedBox(width: 12),
 
             // Song Info

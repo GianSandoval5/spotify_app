@@ -33,6 +33,8 @@ class SafeNetworkImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
+      fadeInDuration: const Duration(milliseconds: 300),
+      fadeOutDuration: const Duration(milliseconds: 100),
       placeholder: (context, url) =>
           placeholder ??
           Container(
@@ -46,7 +48,15 @@ class SafeNetworkImage extends StatelessWidget {
               ),
             ),
           ),
-      errorWidget: (context, url, error) => _buildErrorWidget(),
+      errorWidget: (context, url, error) {
+        // Log del error para debugging
+        print('Error cargando imagen: $url - Error: $error');
+        return _buildErrorWidget();
+      },
+      // Configuraciones adicionales para mejor manejo de cache
+      cacheManager: null, // Usar cache manager por defecto
+      useOldImageOnUrlChange: true,
+      filterQuality: FilterQuality.medium,
     );
 
     if (borderRadius != null) {

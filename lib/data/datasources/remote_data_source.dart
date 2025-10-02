@@ -125,9 +125,7 @@ class RemoteDataSource {
             title: track['name'],
             artist: track['artists'][0]['name'],
             album: track['album']['name'],
-            imageUrl: track['album']['images'].isNotEmpty
-                ? track['album']['images'][0]['url']
-                : '',
+            imageUrl: _getValidImageUrl(track['album']['images']),
             audioUrl: track['preview_url'] ?? '',
             durationInSeconds: (track['duration_ms'] / 1000).round(),
             spotifyUri: track['uri'],
@@ -218,9 +216,7 @@ class RemoteDataSource {
               (artist) => Artist(
                 id: artist['id'],
                 name: artist['name'],
-                imageUrl: artist['images'].isNotEmpty
-                    ? artist['images'][0]['url']
-                    : '',
+                imageUrl: _getValidImageUrl(artist['images']),
                 followers: artist['followers']['total'],
                 genres: List<String>.from(artist['genres']),
               ),
@@ -396,8 +392,7 @@ class RemoteDataSource {
         title: 'Blinding Lights',
         artist: 'The Weeknd',
         album: 'After Hours (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273ef017e899c0547766997d874',
+        imageUrl: 'https://picsum.photos/300/300?random=1',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         durationInSeconds: 200,
@@ -408,8 +403,7 @@ class RemoteDataSource {
         title: 'Shape of You',
         artist: 'Ed Sheeran',
         album: '÷ (Divide) (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96',
+        imageUrl: 'https://picsum.photos/300/300?random=2',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
         durationInSeconds: 235,
@@ -420,8 +414,7 @@ class RemoteDataSource {
         title: 'Bad Guy',
         artist: 'Billie Eilish',
         album: 'When We All Fall Asleep (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b2736dc6a2c4bb92e6e8c3b3b0b1',
+        imageUrl: 'https://picsum.photos/300/300?random=3',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
         durationInSeconds: 194,
@@ -432,8 +425,7 @@ class RemoteDataSource {
         title: 'Watermelon Sugar',
         artist: 'Harry Styles',
         album: 'Fine Line (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b2737ac31bd6c42b5c43b2b9b9b1',
+        imageUrl: 'https://picsum.photos/300/300?random=4',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         durationInSeconds: 174,
@@ -444,8 +436,7 @@ class RemoteDataSource {
         title: 'Levitating',
         artist: 'Dua Lipa',
         album: 'Future Nostalgia (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273be841ba4bc24b8b5c9b5b5b1',
+        imageUrl: 'https://picsum.photos/300/300?random=5',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
         durationInSeconds: 203,
@@ -456,8 +447,7 @@ class RemoteDataSource {
         title: 'Stay',
         artist: 'The Kid LAROI & Justin Bieber',
         album: 'F*CK LOVE 3 (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273e2e9b5b5c9b5b5b1be841ba4',
+        imageUrl: 'https://picsum.photos/300/300?random=6',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
         durationInSeconds: 141,
@@ -468,8 +458,7 @@ class RemoteDataSource {
         title: 'Good 4 U',
         artist: 'Olivia Rodrigo',
         album: 'SOUR (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
+        imageUrl: 'https://picsum.photos/300/300?random=7',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
         durationInSeconds: 178,
@@ -480,8 +469,7 @@ class RemoteDataSource {
         title: 'As It Was',
         artist: 'Harry Styles',
         album: 'Harrys House (Demo)',
-        imageUrl:
-            'https://i.scdn.co/image/ab67616d0000b273b46f74097655d7f353caab14',
+        imageUrl: 'https://picsum.photos/300/300?random=8',
         audioUrl:
             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
         durationInSeconds: 167,
@@ -495,16 +483,14 @@ class RemoteDataSource {
       const Artist(
         id: 'The Weeknd',
         name: 'The Weeknd',
-        imageUrl:
-            'https://i.scdn.co/image/ab6761610000e5eb214f3cf1cbe7139c1e26ffbb',
+        imageUrl: 'https://picsum.photos/300/300?random=10',
         followers: 45000000,
         genres: ['Pop', 'R&B'],
       ),
       const Artist(
         id: 'Ed Sheeran',
         name: 'Ed Sheeran',
-        imageUrl:
-            'https://i.scdn.co/image/ab6761610000e5eb6b80747acfe4e20b71bf2f3c',
+        imageUrl: 'https://picsum.photos/300/300?random=11',
         followers: 42000000,
         genres: ['Pop', 'Folk'],
       ),
@@ -532,5 +518,42 @@ class RemoteDataSource {
         songs: songs.skip(2).toList(),
       ),
     ];
+  }
+
+  /// Obtiene una URL de imagen válida o retorna una URL por defecto
+  String _getValidImageUrl(List<dynamic> images) {
+    if (images.isEmpty) {
+      return _getDefaultImageUrl();
+    }
+
+    // Intentar encontrar una imagen de tamaño medio (640x640 o 300x300)
+    for (final image in images) {
+      final url = image['url'] as String?;
+      final height = image['height'] as int?;
+
+      if (url != null && url.isNotEmpty) {
+        // Preferir imágenes de tamaño medio
+        if (height != null && (height >= 300 && height <= 640)) {
+          return url;
+        }
+      }
+    }
+
+    // Si no encuentra tamaño medio, usar la primera disponible
+    for (final image in images) {
+      final url = image['url'] as String?;
+      if (url != null && url.isNotEmpty) {
+        return url;
+      }
+    }
+
+    // Si no hay URLs válidas, usar imagen por defecto
+    return _getDefaultImageUrl();
+  }
+
+  /// Genera una URL de imagen por defecto usando un servicio de imágenes placeholder
+  String _getDefaultImageUrl() {
+    // Usar un servicio confiable de imágenes placeholder con tema musical
+    return 'https://via.placeholder.com/300x300/1DB954/FFFFFF?text=♪';
   }
 }
