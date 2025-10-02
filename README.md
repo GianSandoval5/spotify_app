@@ -37,11 +37,11 @@ Un clon completamente funcional de Spotify construido con Flutter que integra **
 
 <div align="center">
 
-| 🎵 Reproductor Híbrido | 🔍 Búsqueda Inteligente | ❤️ Biblioteca Personal |
-|:----------------------:|:----------------------:|:----------------------:|
-| ![Player](assets/3.png) | ![Search](assets/2.png) | ![Library](assets/4.png) |
+| � Pantalla Principal | 🔍 Búsqueda Inteligente | 🎵 Reproductor Expandido |
+|:--------------------:|:----------------------:|:------------------------:|
+| ![Home](assets/home.png) | ![Search](assets/search.png) | ![Expanded Player](assets/expanded_reproductor.png) |
 
-**Reproducción premium con detección automática** • **API oficial con indicadores visuales** • **Gestión completa de favoritos**
+**Navegación fluida y moderna** • **API oficial con etiquetas visuales** • **Reproductor completo con controles premium**
 
 </div>
 
@@ -221,30 +221,58 @@ animations: ^2.0.11
 
 ## 📱 Capturas de Pantalla
 
-### 🎵 **Experiencia Completa de la Aplicación**
+### 🚀 **Flujo Completo de Usuario - 8 Pantallas Principales**
 
+#### 🔐 **Autenticación y Acceso**
 <div align="center">
 
-| Login y Autenticación | Búsqueda Inteligente | Reproducción Híbrida |
-|:---------------------:|:-------------------:|:--------------------:|
-| ![Login Screen](assets/1.png) | ![Search Results](assets/2.png) | ![Music Player](assets/3.png) |
-| **Múltiples métodos de login**<br/>OAuth, SDK, Email Demo | **API oficial de Spotify**<br/>Indicadores de Preview/SDK | **Reproductor inteligente**<br/>Controles profesionales |
+| Pantalla de Login | Autenticación Web OAuth |
+|:----------------:|:----------------------:|
+| ![Login](assets/login.png) | ![OAuth Web](assets/auth_web.png) |
+| **Múltiples métodos de acceso**<br/>📧 Email Demo • 🔑 OAuth • 🎵 SDK Directo | **OAuth 2.0 profesional**<br/>🌐 Autenticación web segura con Spotify |
 
-| Biblioteca Personal | Favoritos y Gestión | Navegación Completa |
-|:------------------:|:------------------:|:-------------------:|
-| ![Library Screen](assets/4.png) | ![Favorites Management](assets/5.png) | ![Full Navigation](assets/6.png) |
-| **Organización profesional**<br/>Playlists, Artistas, Historial | **Sistema de favoritos**<br/>Gestión local persistente | **Navegación fluida**<br/>Mini-player siempre visible |
+</div>
+
+#### 🎵 **Navegación y Descubrimiento**
+<div align="center">
+
+| Home Principal | Búsqueda Inteligente |
+|:-------------:|:-------------------:|
+| ![Home](assets/home.png) | ![Search](assets/search.png) |
+| **Dashboard completo**<br/>🏠 Playlists destacadas • 📊 Recomendaciones | **API oficial de Spotify**<br/>🔍 Tiempo real • 🏷️ Etiquetas Preview/SDK |
+
+</div>
+
+#### 🎶 **Sistema de Reproducción**
+<div align="center">
+
+| Mini Reproductor | Reproductor Expandido |
+|:---------------:|:--------------------:|
+| ![Mini Player](assets/mini_reproductor.png) | ![Expanded Player](assets/expanded_reproductor.png) |
+| **Siempre accesible**<br/>⏯️ Controles básicos • 🎵 Info de canción | **Experiencia completa**<br/>🎨 Carátula grande • 🎚️ Controles avanzados |
+
+</div>
+
+#### 📚 **Biblioteca y Gestión**
+<div align="center">
+
+| Favoritos Personales | Listas y Biblioteca |
+|:-------------------:|:------------------:|
+| ![Favoritos](assets/favoritos.png) | ![Listas](assets/listas.png) |
+| **Gestión de favoritos**<br/>❤️ Guardar/Quitar • 📱 Persistencia local | **Organización completa**<br/>📋 Playlists • 👤 Artistas • 📈 Historial |
 
 </div>
 
 ### ✨ **Características Visuales Destacadas**
 
-- 🎨 **Diseño idéntico a Spotify** - UI/UX profesional e intuitiva
-- 🏷️ **Etiquetas informativas** - "Preview" vs "SDK only" claramente marcadas  
-- 🎵 **Mini-player persistente** - Controles siempre accesibles
+- 🎨 **Diseño pixel-perfect** - UI idéntica a Spotify oficial
+- 🏷️ **Indicadores inteligentes** - "Preview" (azul) vs "SDK only" (naranja)
+- 🎵 **Flujo de reproducción híbrido** - Automático entre SDK y local  
 - 🔍 **Búsqueda en tiempo real** - Resultados instantáneos con API oficial
-- ❤️ **Gestión visual de favoritos** - Iconos interactivos y feedback inmediato
-- 📱 **Navegación nativa** - Tabs y transiciones fluidas
+- ❤️ **Gestión visual completa** - Favoritos con feedback inmediato
+- 📱 **Navegación nativa fluida** - Tabs, mini-player, transiciones premium
+- 🌐 **OAuth profesional** - Autenticación web segura integrada
+- 🎚️ **Controles multimedia completos** - Play, pause, seek, shuffle, repeat
 
 ## 🔄 Flujo de Datos
 
@@ -379,7 +407,7 @@ Comportamiento normal:
 ├── 15+ widgets reutilizables  
 ├── 5 servicios especializados
 ├── 8+ modelos de datos con Hive
-└── 10+ pantallas y providers
+└── 8 pantallas principales documentadas con capturas
 
 🎯 Funcionalidades:
 ├── Búsqueda en tiempo real con API oficial
@@ -483,7 +511,7 @@ o en portfolios profesionales.
 ⭐ **Si este proyecto te ayudó, considera darle una estrella en GitHub**  
 🚀 **Perfecto para portfolios, aprendizaje y proyectos base**  
 📚 **Documentación completa y código production-ready**  
-📱 **6 capturas profesionales incluidas** para demostración visual
+📱 **8 capturas profesionales** mostrando el flujo completo de usuario
 
 ## 👤 Sistema de Usuarios
 
