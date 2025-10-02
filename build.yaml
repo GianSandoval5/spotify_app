@@ -1,0 +1,11 @@
+# build.yaml
+targets:
+  $default:
+    builders:
+      hive_generator:hive_generator:
+        enabled: true
+        options:
+          # Opciones de generación de Hive
+          ignore_for_file:
+            - type_annotate_public_apis
+            - prefer_single_quotes
